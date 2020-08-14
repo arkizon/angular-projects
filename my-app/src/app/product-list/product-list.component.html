@@ -1,0 +1,24 @@
+<h2>Products</h2>
+<div *ngFor="let product of products; index as productId">
+  <!-- the div will repeat for every product in the list -->
+  <!-- []=property binding, ()=event binding -->
+  <h3>
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', productId]"
+    >
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+
+  <button (click)="share(product.name)">
+    Share
+  </button>
+
+  <app-product-alert
+    (notify)="onNotify($event)"
+    [product]="product"
+  ></app-product-alert>
+</div>

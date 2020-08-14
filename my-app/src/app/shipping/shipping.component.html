@@ -1,0 +1,13 @@
+<h3>Shiiping Prices</h3>
+
+<div
+  class="shipping-item"
+  *ngFor="let shipping of shippingCosts | async"
+  (click)="pickedOption(shipping)"
+>
+  <!-- the async pipe returns the latest value from a stream of data and continues to do so for the life of a given component.
+     When angular destroy that component, async pipe automatically stops. For detailed information about the async pip, 
+     see the asyncpipe API document  -->
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.price | currency }}</span>
+</div>
